@@ -1,0 +1,10 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: blue url(https://ontheworldmap.com/usa/us-states-map-max.jpg) right; 
+}
+
+
