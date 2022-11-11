@@ -1,0 +1,212 @@
+<html>
+
+<head>
+  <link rel="stylesheet" media="screen" href="funnyStyle.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  
+</head>
+
+<body>
+  <h1>Funny Map Text Editor</h1>
+  <p>Type some funny or factual text into the text box and select a state. then press 'Change Text'.</p>
+  <title for="funnyText">Enter Text and apply it the the state</title>
+  <input type="text" name="funnyText" id="funnyText" class="funnyText" size="80">
+  <br>
+  <select id="stateSelector" class="stateSelector" name="stateSelector" size="10">
+    <option value="Alabama">Alabama</option>
+    <option value="Alaska">Alaska</option>
+    <option value="Arizona">Arizona</option>
+    <option value="Arkansas">Arkansas</option>
+    <option value="California">California</option>
+    <option value="Colorado">Colorado</option>
+    <option value="Connecticut">Connecticut</option>
+    <option value="Delaware">Delaware</option>
+    <option value="Florida">Florida</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Hawaii">Hawaii</option>
+    <option value="Idaho">Idaho</option>
+    <option value="Illinois">Illinois</option>
+    <option value="Indiana">Indiana</option>
+    <option value="Iowa">Iowa</option>
+    <option value="Kansas">Kansas</option>
+    <option value="Kentucky">Kentucky</option>
+    <option value="Louisiana">Louisiana</option>
+    <option value="Maine">Maine</option>
+    <option value="Maryland">Maryland</option>
+    <option value="Massachusetts">Massachusetts</option>
+    <option value="Michigan">Michigan</option>
+    <option value="Minnesota">Minnesota</option>
+    <option value="Mississippi">Mississippi</option>
+    <option value="Missouri">Missouri</option>
+    <option value="Montana">Montana</option>
+    <option value="Nebraska">Nebraska</option>
+    <option value="Nevada">Nevada</option>
+    <option value="New Hampshire">New Hampshire</option>
+    <option value="New Jersey">New Jersey</option>
+    <option value="New Mexico">New Mexico</option>
+    <option value="New York">New York</option>
+    <option value="North Carolina">North Carolina</option>
+    <option value="North Dakota">North Dakota</option>
+    <option value="Ohio">Ohio</option>
+    <option value="Oklahoma">Oklahoma</option>
+    <option value="Oregon">Oregon</option>
+    <option value="Pennsylvania">Pennsylvania</option>
+    <option value="Rhode Island">Rhode Island</option>
+    <option value="South Carolina">South Carolina</option>
+    <option value="South Dakota">South Dakota</option>
+    <option value="Tennessee">Tennessee</option>
+    <option value="Texas">Texas</option>
+    <option value="Utah">Utah</option>
+    <option value="Vermont">Vermont</option>
+    <option value="Virginia">Virginia</option>
+    <option value="Washington">Washington</option>
+    <option value="West Virginia">West Virginia</option>
+    <option value="Wisconsin">Wisconsin</option>
+    <option value="Wyoming">Wyoming</option>
+  </select>
+  <button onclick=myFunction() text> Change Text</button>
+  
+  <canvas id="myCanvas" width="350" height="100" 
+  style="border: 2px solid black; "></canvas>
+  
+  <div id="regions_div" style="width: 1200px; height: 1000px;"></div>
+  <!--<img scr="https://en.wikipedia.org/wiki/List_of_states_and_territories_of_the_United_States#/media/File:Map_of_USA_with_state_and_territory_names_2.png" alt="Image of state mape to help with identifing states">-->
+
+  <script type="text/javascript">
+    google.charts.load('current', {
+      'packages': ['geochart'],
+    });
+
+
+    //List of States and the Default text
+    var defualtData = [['Country', 'label'],
+    ['Alabama', "Hillbilly Red-necks eating road-kill-stew."],
+    ['Alaska', "Santa's Home"],
+    ['Arizona', "Desert #2"],
+    ['Arkansas', "A state with a poverty problem, surrounded by more states in worse poverty"],
+    ['California', "Desert oF DeAtH"],
+    ['Colorado', "Cocaine City WOOOOOOO!"],
+    ['Connecticut', "Place with the rich get richer"],
+    ['Delaware', "Middle of... somewhere?"],
+    ['Florida', "Alligators and Shirtless Men"],
+    ['Georgia', "Hurricane Magnet"],
+    ['Hawaii', "Imminent eruption"],
+    ['Idaho', "Rude drivers"],
+    ['Illinois', "Rat Capital of the most honrable Rat Kngdom"],
+    ['Indiana', "Ahead of Florida in meth addicts"],
+    ['Iowa', "Behold! The Infinite Corn Maze"],
+    ['Kansas', "We're not in... What? Why are you still looking at Kansas? THERES NOTHING HERE!"],
+    ['Kentucky', "Fried Chicken with a side of Heart Disease"],
+    ['Louisiana', "Soon-To-Be-Underwater"],
+    ['Maine', "Other Portland"],
+    ['Maryland', "Oh your from Maryland? Please, keep talking about crabs and lacrosse"],
+    ['Massachusetts', "Welcome to Massachusetts, where the weather is made up and the seasons don't matter"],
+    ['Michigan', "Hight production of state sized mittens"],
+    ['Minnesota', "Snow...Snow...MORE SNOW"],
+    ['Mississippi', "Most Likly State to get STABBED IN"],
+    ['Missouri', "Welcom to Misery - sorry I ment Missouri"],
+    ['Montana', "New Canada"],
+    ['Nebraska', "Summer lasts two weeks here"],
+    ['Nevada', "Desert #1"],
+    ['New Hampshire', "Place to be Poor"],
+    ['New Jersey', "They Murdered the first Jersey"],
+    ['New Mexico', "Basicly Mexico"],
+    ['New York', "Angry People and 'very clean' subways"],
+    ['North Carolina', "Dum People"],
+    ['North Dakota', "South Dekota, but lesser"],
+    ['Ohio', "Theses something in the clean water supply! Is it an alligator? No wait, its just mud."],
+    ['Oklahoma', "Place to go if your greates ambition is to die via tornado"],
+    ['Oregon', "Home of Homeless People"],
+    ['Pennsylvania', "If Portland is the city of Bridges, Pennsylvabia is th state without"],
+    ['Rhode Island', "Almost A State"],
+    ['South Carolina', "wanna get mugged? You found the right place!"],
+    ['South Dakota', "Come and see the mountain with dead people on it!"],
+    ['Tennessee', "West=land of bad music - East=Mount Hillbilly"],
+    ['Texas', "How To Gun Violence"],
+    ['Utah', "If your here you'd best be Mormon"],
+    ['Vermont', "We have two seanons, winter & cold winter"],
+    ['Virginia', "I could say something VERY inappropriate here, but I won't, because I'm a mature boy"],
+    ['Washington', "Sparkally vampires"],
+    ['West Virginia', "Not good enough to be the real Virginia"],
+    ['Wisconsin', "Territory of the Werewolf of Bray Road"],
+    ['Wyoming', "Gay Cowboys"]];
+
+
+
+    //Function to take user input from the selector and text box to change the displayed text on the selected state
+    function myFunction() {
+      const state = document.getElementById("stateSelector").value;
+      const text = document.getElementById("funnyText").value;
+
+      console.log(state + text);
+
+      if (state == null) {
+        console.log("State Error");
+      }
+
+      if ((text == null) || (text == "")) {
+        console.log("Text Break");
+      }
+
+      for (i = 0; i < defualtData.length; i++) {
+        if (state == defualtData[i][0]) {
+          defualtData[i][1] = text;
+          google.charts.setOnLoadCallback(drawRegionsMap);
+          circleX = 50;
+          window.requestAnimationFrame(drawFrame);
+        }
+      }
+    }
+
+    
+    //Ball animation
+    let canvas = document.getElementById("myCanvas");
+    let context = canvas.getContext("2d");
+    let circleX = 50;
+    
+    function drawFrame() {   
+      
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.save();
+   
+      context.beginPath();   
+      context.arc(circleX, 50, 30, 0, 2 * Math.PI);
+      context.fillStyle = "forestgreen";
+      context.fill();
+    
+      context.restore();
+
+      circleX++;
+      if (circleX < 300) {
+        window.requestAnimationFrame(drawFrame);
+        context.fillStyle = "red";
+        context.fill();
+      }
+    }
+
+
+    
+    //Loads Map
+    google.charts.setOnLoadCallback(drawRegionsMap);
+    function drawRegionsMap() {
+      var data = google.visualization.arrayToDataTable(defualtData);
+
+      var options = {
+        sizeAxis: {minValue: 0, maxValue: 100},
+        region: "US", // Western Europe
+
+        displayMode: 'regions',
+        resolution: 'provinces',
+        backgroundColor: '#81d4fa',
+
+      };
+
+      var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+      chart.draw(data, options);
+    }
+
+  </script>
+</body>
+
+</html>
