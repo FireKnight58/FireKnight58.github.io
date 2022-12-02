@@ -27,7 +27,7 @@ var thirdDog = ["Black Labs: known as Labrador Retrievers, these are one of the 
 
 
 
-google.charts.load("current", {packages:["corechart"]});
+
 
 function voteForDog(i) {
   //resets dfault data
@@ -137,6 +137,7 @@ fetch(urlblood)
 
 //Function to create chart
 function drawChart() {
+  google.charts.load("current", {packages:["corechart"]});
   var data = google.visualization.arrayToDataTable(defualtData);
 
   var options = {
