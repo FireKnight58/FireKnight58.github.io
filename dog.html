@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Dog</title>
+  <link href="styleDog.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="scriptDog.js"></script>
+</head>
+
+<header>
+  <h1>Dogs Dogs Dogs</h1>
+  <h2>Vote for your favorite dog!</h2>
+  <a href="index.html">return to landing page</a>
+</header>
+
+<body>
+
+  <table id="table">
+    <tr>
+      <td><button onclick="voteForDog(1)" type="button" class= dogPic id=dog1>
+          <img src="dog1.jpg" alt="Black Lab" width="250" height= "250"><br>
+          <strong>Black Lab</strong>
+        </button></td>
+      
+      <td><button onclick="voteForDog(2)" type="button" class= dogPic id=dog2 >
+          <img src="dog2.webp" alt="German Shepherd" width="250" height= "250"><br>
+          <strong>German Shepherd</strong>
+        </button></td>
+      
+      <td><button onclick="voteForDog(3)" type="button" class= dogPic id=dog3>
+          <img src="dog3.jpg" alt="Shizu" width="250" height= "250"><br>
+          <strong>Shih Tzu</strong>
+        </button></td>
+    
+    </tr>
+    <tr>
+      
+      <td><button onclick="voteForDog(4)" type="button" class= dogPic id=dog4>
+          <img src="dog4.jpg" alt="Jack Russle Terrier" width="250" height= "250"><br>
+          <strong>Jack Russell Terrier</strong>
+        </button></td>
+      
+      <td><button onclick="voteForDog(5)" type="button" class= dogPic id=dog5 >
+          <img src="dog5.jpg" alt="Pug" width="250" height= "250"><br>
+          <strong>Pug</strong>
+        </button></td>
+      
+      <td><button onclick="voteForDog(6)" type="button" class= dogPic id=dog6>
+          <img src="dog6.webp" alt="Dalmatian" width="250" height= "250"><br>
+          <strong>Dalmation</strong>
+        </button></td>
+    
+    </tr>
+    <tr>
+      
+      <td><button onclick="voteForDog(7)" type="button" class= dogPic id=dog7>
+          <img src="dog7.jpg" alt="Bloodhound" width="250" height= "250"><br>
+          <strong>Bloodhound</strong>
+        </button></td>
+      
+      <td><button onclick="voteForDog(8)" type="button" class= dogPic id=dog8>
+          <img src="dog8.jpg" alt="Wolf" width="250" height= "250"><br>
+          <strong>Wolf</strong>
+        </button></td>
+      
+      <td><button onclick="voteForDog(9)" type="button" class= dogPic id=dog9>
+          <img src="dog9.JPG" alt="Australian Shepherd" width="250" height= "250"><br>
+          <strong>Australian Shepherd</strong>
+        </button></td>
+    
+    </tr>
+  </table>
+  
+  <div id="donutchart" style="width: 900px; height: 500px;"></div>
+</body>
+
+  <div id=results></div>
+  <h2 class="hide" id="title"></h2>
+  <div class="hide" id="third" style="opacity: 1"></div>
+
+  <br>
+  
+</html>
