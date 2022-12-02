@@ -133,11 +133,11 @@ fetch(urlblood)
 
 
 
-
+google.charts.load("current", {packages:["corechart"]});
 
 //Function to create chart
 function drawChart() {
-  google.charts.load("current", {packages:["corechart"]});
+  
   var data = google.visualization.arrayToDataTable(defualtData);
 
   var options = {
