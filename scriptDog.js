@@ -58,6 +58,83 @@ function voteForDog(i) {
   thirdText.textContent = thirdDog[i-1];
 }
 
+
+//Fetching picture for labrador
+let urlBlack = "https://dog.ceo/api/breed/labrador/images";
+fetch(urlBlack)
+   .then(function(response) {
+      console.log("status is " + response.status);
+          return response.text();
+   })
+   .then(function(html) {
+      let imgBlack = JSON.parse(html)
+      console.log(imgBlack.message[0]);
+      let black = document.getElementById("black")
+      black.src = imgBlack.message[Math.floor(Math.random() * imgBlack.message.length)];
+     
+   })
+   .catch(function(error) {
+      console.log("Request failed", error)
+   });
+
+//Fetching picture for German Shepherd
+let urlGerman = "https://dog.ceo/api/breed/germanshepherd/images";
+fetch(urlGerman)
+   .then(function(response) {
+      console.log("status is " + response.status);
+          return response.text();
+   })
+   .then(function(htmlgerman) {
+      let imgGerman = JSON.parse(htmlgerman)
+      console.log(imgGerman.message[0]);
+      let german = document.getElementById("german")
+      german.src = imgGerman.message[Math.floor(Math.random() * imgGerman.message.length)];
+     
+   })
+   .catch(function(error) {
+      console.log("Request failed", error)
+   });
+
+//Fetching picture for Dalmatian
+let urlspot = "https://dog.ceo/api/breed/dalmatian/images";
+fetch(urlspot)
+   .then(function(response) {
+      console.log("status is " + response.status);
+          return response.text();
+   })
+   .then(function(htmlspot) {
+      let imgspot = JSON.parse(htmlspot)
+      console.log(imgspot.message[0]);
+      let spot = document.getElementById("spot")
+      spot.src = imgspot.message[Math.floor(Math.random() * imgspot.message.length)];
+     
+   })
+   .catch(function(error) {
+      console.log("Request failed", error)
+   });
+
+//Fetching picture for Bloodhound
+let urlblood = "https://dog.ceo/api/breed/hound/blood/images";
+fetch(urlblood)
+   .then(function(response) {
+      console.log("status is " + response.status);
+          return response.text();
+   })
+   .then(function(htmlblood) {
+      let imgblood = JSON.parse(htmlblood)
+      console.log(imgblood.message[0]);
+      let blood = document.getElementById("blood")
+      blood.src = imgblood.message[Math.floor(Math.random() * imgblood.message.length)];
+     
+   })
+   .catch(function(error) {
+      console.log("Request failed", error)
+   });
+
+
+
+
+
 //Function to create chart
 function drawChart() {
   var data = google.visualization.arrayToDataTable(defualtData);
